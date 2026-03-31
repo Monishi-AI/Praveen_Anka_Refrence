@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANKA — GTM Lead Onboarding · Pravin</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f8faf9;--w:#ffffff;--card:#f2f8f5;--card2:#e8f4ee;
+  --g:#1db87a;--gl:#0f6b47;--gdim:#e8f7f1;
+  --t:#111827;--tm:#6b7280;--tb:#374151;
+  --amb:#f5a623;--amblt:#fef8ec;
+  --vio:#7c5cbf;--violt:#f0edf9;
+  --red:#b91c1c;--redlt:#fef2f2;
+  --border:#e5e7eb;
+}
+body{background:var(--bg);color:var(--t);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;}
+.wrapper{display:flex;min-height:100vh;}
+.sidebar{width:260px;background:var(--gl);position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100;}
+.main{margin-left:260px;flex:1;max-width:960px;padding:40px 48px;}
+.sidebar-logo{padding:28px 24px 16px;border-bottom:1px solid rgba(255,255,255,.15);}
+.sidebar-logo .logo{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:#fff;}
+.sidebar-logo .tagline{font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;font-style:italic;}
+.sidebar-meta{padding:12px 24px 20px;border-bottom:1px solid rgba(255,255,255,.12);}
+.sidebar-meta p{font-size:11px;color:rgba(255,255,255,.65);line-height:1.7;}
+.sidebar-meta strong{color:rgba(255,255,255,.9);}
+.sidebar-nav{padding:16px 0;}
+.nav-section{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);padding:16px 24px 6px;font-weight:600;}
+.nav-item{display:block;padding:8px 24px;font-size:12px;color:rgba(255,255,255,.75);text-decoration:none;transition:all .2s;border-left:3px solid transparent;line-height:1.4;}
+.nav-item:hover,.nav-item.active{background:rgba(255,255,255,.1);color:#fff;border-left-color:rgba(255,255,255,.7);}
+.nav-num{display:inline-block;width:18px;font-weight:700;color:rgba(255,255,255,.5);font-size:10px;}
+.cover{background:linear-gradient(135deg,var(--gl) 0%,#1a4d35 100%);color:#fff;padding:56px 48px;margin:-40px -48px 48px;border-radius:0 0 16px 16px;}
+.cover-anka{font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;color:#fff;line-height:1;}
+.cover-title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:rgba(255,255,255,.85);margin-top:8px;}
+.cover-tagline{font-size:16px;color:#7eefc4;font-style:italic;margin-top:8px;}
+.cover-meta{margin-top:32px;display:flex;gap:24px;flex-wrap:wrap;}
+.cover-meta-item{font-size:12px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);padding:10px 16px;border-radius:8px;}
+.cover-meta-item strong{color:#fff;display:block;font-size:13px;margin-bottom:2px;}
+.cover-intro{margin-top:28px;font-size:14px;color:rgba(255,255,255,.75);max-width:640px;line-height:1.7;border-top:1px solid rgba(255,255,255,.2);padding-top:20px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;background:var(--gdim);color:var(--gl);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:12px;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--t);margin-bottom:8px;}
+h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--gl);margin:32px 0 10px;}
+p{color:var(--tm);margin-bottom:12px;line-height:1.7;}
+.section-divider{border:none;border-top:2px solid var(--border);margin:48px 0;}
+.callout{border-radius:8px;padding:20px 22px;margin:16px 0;border-left:4px solid;}
+.callout.green{background:var(--gdim);border-color:var(--g);}
+.callout.amber{background:var(--amblt);border-color:var(--amb);}
+.callout.red{background:var(--redlt);border-color:var(--red);}
+.callout.vio{background:var(--violt);border-color:var(--vio);}
+.callout-title{font-weight:700;font-size:13px;margin-bottom:6px;}
+.callout.green .callout-title{color:var(--gl);}
+.callout.amber .callout-title{color:#92400e;}
+.callout.red .callout-title{color:var(--red);}
+.callout.vio .callout-title{color:var(--vio);}
+.callout p{margin:0;font-size:13px;line-height:1.7;}
+.callout.green p{color:var(--tb);}
+.callout.amber p{color:#78350f;}
+.callout.red p{color:#7f1d1d;}
+.tbl-wrap{overflow-x:auto;margin:16px 0;border-radius:8px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead tr{background:var(--gl);}
+thead th{padding:10px 14px;text-align:left;font-weight:600;color:#fff;font-size:11px;letter-spacing:.5px;white-space:nowrap;}
+tbody tr:nth-child(odd){background:var(--w);}
+tbody tr:nth-child(even){background:var(--card);}
+tbody tr:hover{background:var(--card2);}
+tbody td{padding:10px 14px;color:var(--tb);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+tbody td:first-child{font-weight:600;color:var(--gl);white-space:nowrap;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0;}
+.stat{background:var(--w);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;border-top:3px solid var(--g);}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--g);}
+.stat-label{font-size:11px;color:var(--tm);margin-top:4px;line-height:1.4;}
+
+/* TARGET BANNER */
+.target-banner{background:linear-gradient(135deg,var(--gl),#1a5c3a);border-radius:12px;padding:28px 32px;margin:20px 0;color:#fff;}
+.target-banner-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;}
+.target-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.target-item{text-align:center;}
+.target-num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:#7eefc4;}
+.target-label{font-size:11px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.4;}
+
+/* ICP CARDS */
+.icp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+.icp-card{background:var(--w);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.icp-header{background:var(--gl);padding:14px 18px;}
+.icp-header h4{color:#fff;margin:0;font-size:14px;font-family:'Space Grotesk',sans-serif;}
+.icp-header .icp-sub{color:rgba(255,255,255,.7);font-size:11px;margin-top:3px;}
+.icp-body{padding:16px 18px;}
+.icp-row{margin-bottom:10px;}
+.icp-row-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--tm);font-weight:600;margin-bottom:3px;}
+.icp-row-val{font-size:13px;color:var(--tb);line-height:1.5;}
+.icp-hook{background:var(--gdim);border-left:3px solid var(--g);padding:10px 12px;border-radius:0 6px 6px 0;font-size:13px;color:var(--gl);font-style:italic;margin-top:10px;}
+
+/* DO/DONT */
+.dodont{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:16px 0;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.do-col{background:#f0fdf4;padding:18px;}
+.dont-col{background:var(--redlt);padding:18px;}
+.dodont-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.do-col .dodont-title{color:#15803d;}
+.dont-col .dodont-title{color:var(--red);}
+.dodont-item{font-size:12px;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.06);line-height:1.5;}
+.do-col .dodont-item{color:#166534;}
+.dont-col .dodont-item{color:#7f1d1d;}
+.dodont-item:last-child{border-bottom:none;}
+
+/* WEEK PLAN */
+.week-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.week-card{background:var(--w);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.week-header{padding:12px 16px;background:var(--amb);}
+.week-header h4{color:#fff;margin:0;font-size:13px;font-family:'Space Grotesk',sans-serif;}
+.week-header .week-sub{color:rgba(255,255,255,.8);font-size:11px;margin-top:2px;}
+.week-body{padding:14px 16px;}
+.week-item{font-size:13px;color:var(--tb);padding:5px 0 5px 16px;position:relative;border-bottom:1px solid var(--border);line-height:1.5;}
+.week-item:last-child{border-bottom:none;}
+.week-item::before{content:'→';position:absolute;left:0;color:var(--g);font-size:11px;top:7px;}
+
+/* RHYTHM */
+.rhythm{display:grid;grid-template-columns:auto 1fr;gap:0;margin:16px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.rhythm-day{background:var(--gl);color:#fff;padding:12px 16px;font-weight:700;font-size:12px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.15);}
+.rhythm-desc{padding:12px 16px;background:var(--w);font-size:13px;color:var(--tb);border-bottom:1px solid var(--border);}
+.rhythm-day:last-of-type,.rhythm-desc:last-of-type{border-bottom:none;}
+
+/* BANNED WORDS */
+.banned{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.banned-word{background:var(--redlt);color:var(--red);border:1px solid #fca5a5;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:600;text-decoration:line-through;}
+
+/* NUMBERS */
+.numbers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.number-item{background:var(--w);border:1px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:12px;}
+.number-big{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--g);flex-shrink:0;min-width:80px;line-height:1.2;}
+.number-desc{font-size:12px;color:var(--tm);line-height:1.5;}
+.number-use{font-size:11px;color:var(--gl);font-style:italic;margin-top:3px;}
+
+/* TOC */
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;}
+.toc-item{background:var(--w);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-decoration:none;transition:all .2s;display:flex;gap:10px;align-items:flex-start;}
+.toc-item:hover{border-color:var(--g);background:var(--gdim);}
+.toc-num{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--g);flex-shrink:0;line-height:1;}
+.toc-title{font-weight:600;font-size:13px;color:var(--t);}
+.toc-sub{font-size:11px;color:var(--tm);margin-top:2px;line-height:1.4;}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:0;left:260px;right:0;height:3px;background:var(--border);z-index:200;}
+.progress-fill{height:100%;background:var(--g);transition:width .3s;}
+
+@media(max-width:900px){
+  .sidebar{width:220px;}.main{margin-left:220px;padding:28px 24px;}
+  .icp-grid,.week-grid,.numbers,.toc-grid,.target-grid{grid-template-columns:1fr;}
+  .dodont{grid-template-columns:1fr;}
+  .cover{padding:36px 24px;margin:-28px -24px 36px;}
+}
+@media(max-width:640px){.sidebar{display:none;}.main{margin-left:0;}}
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo">ANKA</div>
+    <div class="tagline">"AI that executes your AR"</div>
+  </div>
+  <div class="sidebar-meta">
+    <p>
+      <strong>Pravin — GTM Lead</strong>
+      Start: April 6, 2026<br>
+      L1: Gayatri Garg (CRO)<br>
+      L2: Madhav Garg (CEO)<br>
+      Day-to-day: Monishi Kothiyal
+    </p>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Overview</div>
+    <a href="#toc" class="nav-item"><span class="nav-num">→</span> Contents</a>
+    <div class="nav-section">Sections</div>
+    <a href="#s01" class="nav-item"><span class="nav-num">01</span> Company Context</a>
+    <a href="#s02" class="nav-item"><span class="nav-num">02</span> The Market</a>
+    <a href="#s03" class="nav-item"><span class="nav-num">03</span> The Problem</a>
+    <a href="#s04" class="nav-item"><span class="nav-num">04</span> The Product</a>
+    <a href="#s05" class="nav-item"><span class="nav-num">05</span> Competitors</a>
+    <a href="#s06" class="nav-item"><span class="nav-num">06</span> ICP & Positioning</a>
+    <a href="#s07" class="nav-item"><span class="nav-num">07</span> Brand Voice</a>
+    <a href="#s08" class="nav-item"><span class="nav-num">08</span> GTM Motion</a>
+    <a href="#s09" class="nav-item"><span class="nav-num">09</span> Content & SEO</a>
+    <a href="#s10" class="nav-item"><span class="nav-num">10</span> First 30 Days</a>
+    <a href="#s11" class="nav-item"><span class="nav-num">11</span> Team & Tools</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-anka">ANKA</div>
+  <div class="cover-title">GTM Lead — Onboarding Reference</div>
+  <div class="cover-tagline">"AI that executes your AR"</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Pravin</strong>GTM Lead</div>
+    <div class="cover-meta-item"><strong>April 6, 2026</strong>Start Date</div>
+    <div class="cover-meta-item"><strong>Gayatri Garg</strong>L1 · CRO</div>
+    <div class="cover-meta-item"><strong>Madhav Garg</strong>L2 · CEO</div>
+    <div class="cover-meta-item"><strong>Monishi Kothiyal</strong>Marketing Executive · Day-to-day</div>
+  </div>
+  <div class="cover-intro">This is your single reference for everything you need to understand ANKA, hit the ground running, and own the GTM function. Read it before your first call. Every section is built from ANKA's actual research, positioning, and brand documents.</div>
+</div>
+
+<!-- TARGETS -->
+<div class="target-banner">
+  <div class="target-banner-title">6-Month Targets — Your North Star</div>
+  <div class="target-grid">
+    <div class="target-item"><div class="target-num">$2M</div><div class="target-label">Marketing Revenue Target</div></div>
+    <div class="target-item"><div class="target-num">$7M</div><div class="target-label">Pipeline Value</div></div>
+    
+    <div class="target-item"><div class="target-num">112</div><div class="target-label">Total MQLs by 6 Months</div></div>
+    <div class="target-item"><div class="target-num">19–20</div><div class="target-label">MQLs / Month</div></div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div id="toc">
+  <div class="section-label">Contents</div>
+  <h2>What's in This Document</h2>
+  <div class="toc-grid">
+    <a href="#s01" class="toc-item"><div class="toc-num">01</div><div><div class="toc-title">Company Context</div><div class="toc-sub">What ANKA is, JHC→ANKA transition, where we are today</div></div></a>
+    <a href="#s02" class="toc-item"><div class="toc-num">02</div><div><div class="toc-title">The Market</div><div class="toc-sub">Market size, trends, target states, the opportunity</div></div></a>
+    <a href="#s03" class="toc-item"><div class="toc-num">03</div><div><div class="toc-title">The Problem We Solve</div><div class="toc-sub">Where execution breaks down — in numbers</div></div></a>
+    <a href="#s04" class="toc-item"><div class="toc-num">04</div><div><div class="toc-title">The Product</div><div class="toc-sub">What ANKA does, what it's not, pricing model</div></div></a>
+    <a href="#s05" class="toc-item"><div class="toc-num">05</div><div><div class="toc-title">Competitive Landscape</div><div class="toc-sub">Who we compete with and why ANKA wins</div></div></a>
+    <a href="#s06" class="toc-item"><div class="toc-num">06</div><div><div class="toc-title">ICP & Positioning</div><div class="toc-sub">4 buyer personas — world, pain, angle, hook</div></div></a>
+    <a href="#s07" class="toc-item"><div class="toc-num">07</div><div><div class="toc-title">Brand Voice</div><div class="toc-sub">How ANKA sounds, banned words, numbers to know</div></div></a>
+    <a href="#s08" class="toc-item"><div class="toc-num">08</div><div><div class="toc-title">GTM Motion</div><div class="toc-sub">Channels, pipeline, current outreach, April targets</div></div></a>
+    <a href="#s09" class="toc-item"><div class="toc-num">09</div><div><div class="toc-title">Content & SEO</div><div class="toc-sub">Content plan, keyword clusters, funnel stages, SOP</div></div></a>
+    <a href="#s10" class="toc-item"><div class="toc-num">10</div><div><div class="toc-title">Your First 30 Days</div><div class="toc-sub">What to do, who to meet, what to own</div></div></a>
+    <a href="#s11" class="toc-item"><div class="toc-num">11</div><div><div class="toc-title">Team & Tools</div><div class="toc-sub">Who does what, tool stack</div></div></a>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- 01 COMPANY CONTEXT -->
+<section id="s01">
+  <div class="section-label">01 — Company Context</div>
+  <h2>What is ANKA?</h2>
+  <div class="callout green">
+    <div class="callout-title">Core Positioning Statement</div>
+    <p>ANKA is an AI-native revenue cycle execution platform built for mid-market healthcare. We close the gap between what healthcare organizations should be collecting and what they actually collect — by turning remittance data, payer contracts, and claim intelligence into automated revenue recovery.<br><br><strong>Tagline: "AI that executes your AR"</strong></p>
+  </div>
+  <p>ANKA operates as a backend execution layer on top of existing RCM workflows. It does not replace billing teams, EHRs, or PMS systems. It does what those systems cannot: execute the work that would otherwise go unworked.</p>
+
+  <h3>The JHC → ANKA Pivot</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Entity</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td>JHC (Jindal Healthcare)</td><td>Parent / holding entity. Legal and corporate structure unchanged. Not market-facing going forward.</td></tr>
+      <tr><td>ANKA</td><td>The market-facing brand. All comms, outreach, LinkedIn, and website = ANKA only.</td></tr>
+      <tr><td>ankarcm.ai</td><td>Current primary domain — transitioning to ankahealth.ai by end of April 2026.</td></tr>
+      <tr><td>ankahealth.ai</td><td>New primary domain. Email warmup underway. Full switch target: April end.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Where We Are on Day 1 — April 6</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Area</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Infrastructure</td><td>HubSpot rebuilt, 11 domains DNS-configured, website live, Vector installed for real-time visitor ID</td></tr>
+      <tr><td>Database</td><td>9K contacts ICP-tagged across 4 personas</td></tr>
+      <tr><td>Outreach</td><td>Campaign A (RCM Directors) live. Campaign B (CFOs) launching this week.</td></tr>
+      <tr><td>TORCH Conference</td><td>Apr 13–16. Booth #3. 78 relevant attendees pre-mapped. Your first in-person ANKA moment.</td></tr>
+      <tr><td>April demo target</td><td>8 demos on calendar by Apr 16</td></tr>
+      <tr><td>First deal target</td><td>May 2026. MQLs building from April.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 02 THE MARKET -->
+<section id="s02">
+  <div class="section-label">02 — The Market</div>
+  <h2>Market Size & Why Now</h2>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">$58.5B</div><div class="stat-label">U.S. RCM market (2024)</div></div>
+    <div class="stat"><div class="stat-num">$175B+</div><div class="stat-label">Projected by 2034 (11.5% CAGR)</div></div>
+    <div class="stat"><div class="stat-num">388+</div><div class="stat-label">RCM companies in the U.S.</div></div>
+    <div class="stat"><div class="stat-num">55%</div><div class="stat-label">of health tech funding captured by AI in 2025</div></div>
+    <div class="stat"><div class="stat-num">$50B</div><div class="stat-label">CMS Rural Health Transformation Fund 2026–2030</div></div>
+    <div class="stat"><div class="stat-num">30–60%</div><div class="stat-label">McKinsey: agentic AI cost-to-collect reduction (Jan 2026)</div></div>
+  </div>
+
+  <h3>Target States — Tier 1 Focus</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>State</th><th>Key Numbers</th><th>ANKA Angle</th></tr></thead>
+    <tbody>
+      <tr><td>Texas</td><td>568 hospitals · 147 rural · 21 closed last decade · 77% rural hospitals negative net income · $281M CMS Yr 1</td><td>Largest opportunity nationally. Rural closure crisis + federal funding = perfect entry point.</td></tr>
+      <tr><td>Georgia</td><td>~170 hospitals · 54 rural · 22 at risk (30%) · No Medicaid expansion · $219M CMS Yr 1</td><td>High closure risk + no Medicaid = maximum denial complexity. Urgent buyers.</td></tr>
+      <tr><td>Florida</td><td>400+ hospitals · 80 PE cardiology locations (highest in U.S.) · $210M CMS</td><td>PE cardiology concentration = ideal PE ICP entry. Standardisation play.</td></tr>
+      <tr><td>Louisiana</td><td>~130 hospitals · 55 rural · 27 at risk (48%) · $208M CMS</td><td>Highest closure risk %. Buyers under extreme pressure. Highest urgency.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 03 THE PROBLEM -->
+<section id="s03">
+  <div class="section-label">03 — The Problem We Solve</div>
+  <h2>The Execution Problem</h2>
+  <div class="callout amber">
+    <div class="callout-title">The Core Insight — Memorise This</div>
+    <p>The revenue cycle problem for mid-market healthcare is NOT a data problem, an insight problem, or a technology problem. It is an <strong>EXECUTION problem</strong>. The work that needs to happen — appealing denials, following up with payers, identifying underpayments, working aged AR — simply doesn't get done.</p>
+  </div>
+
+  <h3>Three Execution Failures</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Problem</th><th>Key Stats</th><th>What This Means for a Buyer</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Denial Management Failure</td>
+        <td>$262B denied annually (AHA) · 35–60% never resubmitted · 57% MA appeal success rate — but &lt;1% actually filed · MA denials +59% in 2024 · 1 FTE = ~53 appeals/month · Mid-market generates 500–1,000/month</td>
+        <td>Structurally impossible to work all denials manually. Revenue permanently lost — not uncollectable, just unworked.</td>
+      </tr>
+      <tr>
+        <td>Invisible Underpayment Leakage</td>
+        <td>3–5% of net revenue lost · 11% of claims underpaid · 90% of variances never disputed · Posts silently as "contractual adjustment"</td>
+        <td>CFOs don't know this is happening. It posts as a write-off before anyone reviews it. ANKA catches it at the remittance level.</td>
+      </tr>
+      <tr>
+        <td>Unworked Aged AR</td>
+        <td>18–22% of AR sits >90 days · Written off as bad debt — not uncollectable, just unworked · 40% front office turnover · Timely filing deadlines pass</td>
+        <td>Staff deprioritise old claims. ANKA prioritises by recovery probability and dollar value.</td>
+      </tr>
+    </tbody>
+  </table></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 04 THE PRODUCT -->
+<section id="s04">
+  <div class="section-label">04 — The Product</div>
+  <h2>What ANKA Actually Does</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Capability</th><th>How It Works</th></tr></thead>
+    <tbody>
+      <tr><td>Denial Management</td><td>Reads the EOB → pulls clinical history → constructs the appeal → submits it. No analyst intervention. Routes only ~10% requiring clinical judgment — with full context. Also identifies patterns causing repeat rejections across payers.</td></tr>
+      <tr><td>Underpayment Recovery</td><td>Reconciles every remittance against contracted rates at CPT code, modifier, and site-of-care level. Disputes automatically with contract-backed documentation. Surfaces underpayment patterns by payer for escalation.</td></tr>
+      <tr><td>Aged AR Follow-up</td><td>Automates claim status checks and payer follow-up. Prioritises AR by recovery probability and dollar value — high-value aged claims get worked before timely filing deadlines pass, not after.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>What ANKA Is NOT</h3>
+  <div class="callout red">
+    <div class="callout-title">Never describe ANKA as any of these</div>
+    <p>✗ &nbsp;A rip-and-replace EMR, PMS, or clearinghouse<br>
+    ✗ &nbsp;Generic RCM outsourcing or staffing augmentation<br>
+    ✗ &nbsp;A reporting dashboard or analytics-only platform<br>
+    ✗ &nbsp;Another denial worklist for your billing team to manage manually<br>
+    ✗ &nbsp;A vendor that guarantees "AI-powered" improvements without outcome accountability</p>
+  </div>
+
+  <h3>Pricing Model — The Structural Advantage</h3>
+  <div class="callout green">
+    <div class="callout-title">Outcome-Owned Pricing</div>
+    <p>ANKA's AI-native cost structure makes outcome guarantees possible — and profitable.<br><br>
+    Marginal cost of an additional appeal: <strong>near-zero (AI)</strong> vs $25–$181 (manual)<br>
+    1,000 appeals/month costs ANKA the same as 100.<br><br>
+    Staffing vendors <strong>can't</strong> offer outcome guarantees (their costs scale with volume).<br>
+    Analytics vendors <strong>won't</strong> offer guarantees (they don't control execution).<br>
+    <strong>ANKA can — and does. SLAs on results are in the contract.</strong></p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 05 COMPETITORS -->
+<section id="s05">
+  <div class="section-label">05 — Competitive Landscape</div>
+  <h2>Three Market Models — ANKA Occupies a Fourth</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Model</th><th>What They Sell</th><th>ANKA's Advantage</th></tr></thead>
+    <tbody>
+      <tr><td>Staffing-Based RCM<br><span style="font-weight:400;color:#9ca3af;font-size:11px">R1, Ensemble, GeBBS</span></td><td>People. Labor augmentation onshore/offshore.</td><td>Linear cost scaling. No outcome guarantees. 40% turnover is their problem too.</td></tr>
+      <tr><td>Analytics-Only AI<br><span style="font-weight:400;color:#9ca3af;font-size:11px">Waystar, Nuvolo</span></td><td>Dashboards and alerts. Shows you the problem.</td><td>They don't do the work. Dashboard fatigue is real. ANKA executes.</td></tr>
+      <tr><td>Point Solutions<br><span style="font-weight:400;color:#9ca3af;font-size:11px">Aspirion (denials), Fathom (coding)</span></td><td>AI for one function only.</td><td>Solves one piece. ANKA covers the full back-end: denials + AR + underpayments.</td></tr>
+      <tr><td>Enterprise AI<br><span style="font-weight:400;color:#9ca3af;font-size:11px">AKASA, Smarter Technologies</span></td><td>Full execution — but for $500M+ health systems.</td><td>4+ month deploy. Priced out of mid-market. ANKA is purpose-built for mid-market.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Closest Competitor: RapidClaims</h3>
+  <div class="callout amber">
+    <div class="callout-title">RapidClaims vs ANKA</div>
+    <p>RapidClaims ($11M Accel-led) is our most direct competitor. #2 Black Book rating. 98% clean claim rate.<br><br>
+    <strong>Where ANKA wins:</strong> RapidClaims is pure software — no services wrapper, no outcome guarantee. ANKA is outcome-owned: SLAs in the contract, accountability for recovery, not just a tool.</p>
+  </div>
+
+  <h3>The Olive AI Cautionary Tale</h3>
+  <p>Olive AI raised $852M and failed. Every CFO and RCM Director remembers this. When you hear AI skepticism, this is why. ANKA's answer: specific outcomes, contractual SLAs, and explicit acknowledgment that humans handle the 10% requiring judgment. <strong>Honesty IS the differentiator.</strong></p>
+</section>
+
+<hr class="section-divider">
+
+<!-- 06 ICP & POSITIONING -->
+<section id="s06">
+  <div class="section-label">06 — ICP & Positioning</div>
+  <h2>The 4 Buyer Personas</h2>
+  <div class="icp-grid">
+    <div class="icp-card">
+      <div class="icp-header"><h4>ICP 1 — CEO / Physician Leaders</h4><div class="icp-sub">Mid-market physician groups · $10M–$100M · 10–50+ providers</div></div>
+      <div class="icp-body">
+        <div class="icp-row"><div class="icp-row-label">Their World</div><div class="icp-row-val">Running a practice, not a billing operation. Can't find or keep staff. Revenue leaking but no time to investigate.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Core Pain</div><div class="icp-row-val">40% billing staff turnover · 1–3 people doing the work of 10 · Denials pile up</div></div>
+        <div class="icp-row"><div class="icp-row-label">Sophistication</div><div class="icp-row-val">Stage 2–3. Aware of problem, starting to hear about AI. Lead with clear promise + mechanism.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Transformation</div><div class="icp-row-val">"Billing problems vanish. Revenue appears. You never think about it."</div></div>
+        <div class="icp-hook">"You'll never solve the billing staffing crisis. Here's how to make it irrelevant."</div>
+      </div>
+    </div>
+    <div class="icp-card">
+      <div class="icp-header"><h4>ICP 2 — CFO at Community / Rural Hospitals</h4><div class="icp-sub">Community & rural hospitals · $10M–$300M · 1% operating margins</div></div>
+      <div class="icp-body">
+        <div class="icp-row"><div class="icp-row-label">Their World</div><div class="icp-row-val">1% margins. Revenue leaking through underpayments they can't see. Every write-off matters.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Core Pain</div><div class="icp-row-val">3–5% net revenue lost to underpayments · AR >90 days unworked · Cost-to-collect eroding margin</div></div>
+        <div class="icp-row"><div class="icp-row-label">Sophistication</div><div class="icp-row-val">Stage 3. Aware of AI, skeptical after Olive. Need mechanism + proof.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Transformation</div><div class="icp-row-val">"Money you earned but never collected starts showing up. Margin expands."</div></div>
+        <div class="icp-hook">"Your payer is underpaying you on 11% of claims. 90% of those variances are never disputed."</div>
+      </div>
+    </div>
+    <div class="icp-card">
+      <div class="icp-header"><h4>ICP 3 — RCM Director / VP</h4><div class="icp-sub">RCM Director · VP Revenue Cycle · Billing Manager · Mid-market healthcare</div></div>
+      <div class="icp-body">
+        <div class="icp-row"><div class="icp-row-label">Their World</div><div class="icp-row-val">Deeply jaded. Heard every promise. Team is drowning. Staff burned out on denial queues that never empty.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Core Pain</div><div class="icp-row-val">Denial rates climbing · AR aging · Staff bandwidth maxed · Every vendor promises "AI"</div></div>
+        <div class="icp-row"><div class="icp-row-label">Sophistication</div><div class="icp-row-val">Stage 4. Most jaded ICP. Need specificity + risk reversal. Zero tolerance for hype.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Transformation</div><div class="icp-row-val">"Your team stops drowning. 90% of the grind disappears. Nothing goes unworked."</div></div>
+        <div class="icp-hook">"You have 500 denials. Your team can work 53 a month. What happens to the other 447?"</div>
+      </div>
+    </div>
+    <div class="icp-card">
+      <div class="icp-header"><h4>ICP 4 — PE Operating Partners</h4><div class="icp-sub">Operating Partner · VP Operations · Portfolio Director at PE firms</div></div>
+      <div class="icp-body">
+        <div class="icp-row"><div class="icp-row-label">Their World</div><div class="icp-row-val">Portfolio companies with inconsistent RCM performance. EBITDA pressure. No standardised playbook.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Core Pain</div><div class="icp-row-val">Revenue cycle variability across portfolio · No outcome accountability · Cost structure opaque</div></div>
+        <div class="icp-row"><div class="icp-row-label">Sophistication</div><div class="icp-row-val">Stage 2. Newer to AI-RCM as thesis. Lead with bold claim + McKinsey validation.</div></div>
+        <div class="icp-row"><div class="icp-row-label">Transformation</div><div class="icp-row-val">"Every acquisition gets instant operating leverage. Standardized. Measurable. Guaranteed."</div></div>
+        <div class="icp-hook">"McKinsey: agentic AI can cut RCM cost-to-collect 30–60%. Your portfolio is the ignition point."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 07 BRAND VOICE -->
+<section id="s07">
+  <div class="section-label">07 — Brand Voice</div>
+  <h2>How ANKA Sounds</h2>
+  <p style="font-style:italic;color:var(--tb)">ANKA sounds like the senior revenue cycle operator who left the trenches, built what the industry actually needs, and came back to show you. Direct without being aggressive. Specific without being technical. Confident enough to guarantee outcomes in the contract — and honest enough to tell you exactly what the AI does and doesn't do.</p>
+
+  <h3>DO vs. DON'T</h3>
+  <div class="dodont">
+    <div class="do-col">
+      <div class="dodont-title">✓ Say This</div>
+      <div class="dodont-item">"ANKA reads the EOB, constructs the appeal, and submits it."</div>
+      <div class="dodont-item">"35–60% of denied claims are never resubmitted. ANKA works all of them."</div>
+      <div class="dodont-item">"The execution layer. We do the work."</div>
+      <div class="dodont-item">"Humans handle the 10% requiring judgment — the other 90% gets done automatically."</div>
+      <div class="dodont-item">"Outcome-owned pricing. SLAs in the contract."</div>
+    </div>
+    <div class="dont-col">
+      <div class="dodont-title">✗ Never Say This</div>
+      <div class="dodont-item">"ANKA is an AI-powered platform that transforms your revenue cycle."</div>
+      <div class="dodont-item">"Optimize your RCM with cutting-edge technology."</div>
+      <div class="dodont-item">"An innovative AI solution for healthcare organizations."</div>
+      <div class="dodont-item">"Our AI handles everything." (Olive AI said this. It failed.)</div>
+      <div class="dodont-item">Any vague claim without a specific number backing it.</div>
+    </div>
+  </div>
+
+  <h3>Banned Words</h3>
+  <div class="banned">
+    <span class="banned-word">AI-powered</span>
+    <span class="banned-word">innovative</span>
+    <span class="banned-word">cutting-edge</span>
+    <span class="banned-word">transformative</span>
+    <span class="banned-word">solution</span>
+    <span class="banned-word">leverage</span>
+    <span class="banned-word">optimize</span>
+    <span class="banned-word">game-changing</span>
+    <span class="banned-word">seamless</span>
+    <span class="banned-word">robust</span>
+    <span class="banned-word">synergy</span>
+    <span class="banned-word">holistic</span>
+  </div>
+
+  <h3>Numbers to Know by Heart</h3>
+  <div class="numbers">
+    <div class="number-item"><div class="number-big">$262B</div><div><div class="number-desc">Denied annually in the U.S. (AHA)</div><div class="number-use">Opening stat for any denial conversation</div></div></div>
+    <div class="number-item"><div class="number-big">35–60%</div><div><div class="number-desc">Of denied claims never resubmitted</div><div class="number-use">The execution gap. Use constantly.</div></div></div>
+    <div class="number-item"><div class="number-big">57%</div><div><div class="number-desc">MA denial appeal success rate — but &lt;1% are actually filed</div><div class="number-use">The opportunity hiding in plain sight</div></div></div>
+    <div class="number-item"><div class="number-big">+59%</div><div><div class="number-desc">Medicare Advantage denial spike in 2024</div><div class="number-use">With CFOs and RCM Directors. Payer AI is escalating.</div></div></div>
+    <div class="number-item"><div class="number-big">53</div><div><div class="number-desc">Appeals per FTE per month. Mid-market generates 500–1,000.</div><div class="number-use">The math that makes manual impossible</div></div></div>
+    <div class="number-item"><div class="number-big">3–5%</div><div><div class="number-desc">Net revenue lost to underpayments</div><div class="number-use">CFO opener. Invisible money.</div></div></div>
+    <div class="number-item"><div class="number-big">30–60%</div><div><div class="number-desc">McKinsey: cost-to-collect reduction from agentic AI (Jan 2026)</div><div class="number-use">With PE and CFOs. External validation.</div></div></div>
+    <div class="number-item"><div class="number-big">$852M</div><div><div class="number-desc">Olive AI raised before failing</div><div class="number-use">Pre-empt AI skepticism every time</div></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 08 GTM MOTION -->
+<section id="s08">
+  <div class="section-label">08 — GTM Motion</div>
+  <h2>Current Channels — State of Play (April 6)</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Channel</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Cold Email — Campaign A</td><td>RCM Directors (ICP 3). Live and sending. 15–25/day. Smartlead. ankarcm.com domains.</td></tr>
+      <tr><td>Cold Email — Campaign B</td><td>CFOs (ICP 2). Launching this week. A-tier verified list from Akash.</td></tr>
+      <tr><td>Cold Email — C & D</td><td>CEO/Physicians and PE Partners. Launching through April. Full ramp May at 600+/day.</td></tr>
+      <tr><td>LinkedIn Organic</td><td>3 posts/week. Tanu writes copy. Sukriti designs graphics. No paid ads until May — decision made then.</td></tr>
+      <tr><td>TORCH Conference</td><td>Apr 13–16. Booth #3. 78 relevant attendees pre-mapped and ICP-tagged. Your first in-person moment.</td></tr>
+      <tr><td>Inbound / Vector</td><td>Vector identifies named website visitors in real time. Hot accounts routed to Gayatri via Slack same day.</td></tr>
+      <tr><td>HubSpot</td><td>Pipeline rebuilt and named ANKA. ICPs tagged. Lead scoring active. Demo booking on all key pages.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Pipeline Targets</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Metric</th><th>April</th><th>May</th><th>6-Month Total</th></tr></thead>
+    <tbody>
+      <tr><td>Demos on calendar</td><td>8 by Apr 16</td><td>10+/week pace</td><td>—</td></tr>
+      <tr><td>MQLs</td><td>19–20/month building</td><td>19–20/month target</td><td>112 total by 6 months</td></tr>
+      <tr><td>Pipeline value</td><td>First proposals</td><td>First deal closes</td><td>$7M</td></tr>
+      <tr><td>Pipeline deals</td><td>—</td><td>Building</td><td>28 deals</td></tr>
+      <tr><td>Revenue target</td><td>—</td><td>First deal</td><td>$2M</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 09 CONTENT & SEO -->
+<section id="s09">
+  <div class="section-label">09 — Content & SEO</div>
+  <h2>Content Overview</h2>
+  <p>Content is organised by ICP, not by keyword. Every piece has one primary reader. SEO is the distribution channel. Every piece leads to ANKA — not as a pitch, as the logical next step.</p>
+
+  <h3>Funnel Stages</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Stage</th><th>Objective</th><th>Content Types</th><th>CTA</th></tr></thead>
+    <tbody>
+      <tr><td>TOFU</td><td>Educate. Make the hidden visible.</td><td>Blog posts · LinkedIn posts · Stats / infographics</td><td>"Run your revenue leakage assessment"</td></tr>
+      <tr><td>MOFU</td><td>Deepen understanding. Build urgency.</td><td>Quick guides · Comparison frameworks · Email nurture</td><td>"Download the guide" / "See how ANKA closes the gap"</td></tr>
+      <tr><td>BOFU</td><td>Drive conversion. Show ROI.</td><td>Landing pages · ROI narratives · Demo prep emails</td><td>"Book a Demo" / "See ANKA in Action"</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Priority SEO Keyword Clusters</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Cluster</th><th>Priority Keywords</th><th>Why ANKA Wins</th></tr></thead>
+    <tbody>
+      <tr><td>Denial Management</td><td>AI denial management · healthcare claim denials · autonomous appeal generation</td><td>Fastest-growing AI RCM application. ANKA wins on execution specificity.</td></tr>
+      <tr><td>Underpayment Recovery</td><td>underpayment recovery healthcare · payer contract variance analysis · CPT-level reimbursement</td><td>Low competition. High CFO intent. ANKA's GTM wedge. <strong>Publish first.</strong></td></tr>
+      <tr><td>AR Optimisation</td><td>aged accounts receivable healthcare · 90 day AR · AR follow-up automation</td><td>RCM Director audience. Complement to denial management.</td></tr>
+      <tr><td>RCM Mid-Market</td><td>RCM outsourcing physician groups · revenue cycle community hospital</td><td>Underserved niche. ANKA purpose-built. Commercial intent.</td></tr>
+      <tr><td>PE / Finance</td><td>healthcare cost-to-collect reduction · healthcare PE operating leverage</td><td>Almost no quality content exists. Category-defining opportunity.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Content to Publish First</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Title</th><th>ICP · Format · Priority</th></tr></thead>
+    <tbody>
+      <tr><td>Underpayment Recovery: The Revenue You're Earning But Never Collecting</td><td>CFO · Pillar Guide (3,500w) · <strong>PUBLISH FIRST</strong></td></tr>
+      <tr><td>Why Physician Groups Can't Hire Their Way Out of the Billing Staffing Crisis</td><td>CEO/Physician · Pillar Guide (3,000w) · DO SECOND</td></tr>
+      <tr><td>RCM Outsourcing for Physician Groups: What's Changed in 2026</td><td>CEO/Physician · Comparison Guide · DO THIRD</td></tr>
+      <tr><td>Healthcare Revenue Leakage: 7 Places Your Hospital Is Losing Money</td><td>CFO · Diagnostic Guide · HIGH PRIORITY</td></tr>
+      <tr><td>CMS Rural Health Transformation Funding: How to Use $50B for RCM</td><td>CFO Rural · Timely Guide · QUICK WIN</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 10 FIRST 30 DAYS -->
+<section id="s10">
+  <div class="section-label">10 — Your First 30 Days</div>
+  <h2>What to Do, Who to Meet, What to Own</h2>
+  <div class="week-grid">
+    <div class="week-card">
+      <div class="week-header"><h4>Week 1 — Apr 6–12</h4><div class="week-sub">Absorb · Read · Ask</div></div>
+      <div class="week-body">
+        <div class="week-item">Read all 10 ANKA source docs (this doc covers the key content from all of them)</div>
+        <div class="week-item">Review all 4 active email sequences in Smartlead</div>
+        <div class="week-item">Attend TORCH briefing with Monishi</div>
+        <div class="week-item">Shadow Noor on outreach and reply handling</div>
+        <div class="week-item">First Monday 1hr check-in with Gayatri</div>
+      </div>
+    </div>
+    <div class="week-card">
+      <div class="week-header"><h4>Week 2 — Apr 13–16</h4><div class="week-sub">TORCH · Observe · Capture</div></div>
+      <div class="week-body">
+        <div class="week-item">Attend TORCH Apr 13–16 — your first in-person ANKA moment</div>
+        <div class="week-item">Observe buyer language, objections, competitor positioning at the booth</div>
+        <div class="week-item">Post LinkedIn live content from the floor (coordinate with Tanu/Sukriti)</div>
+        <div class="week-item">Note: how does ANKA's positioning land in real conversations?</div>
+      </div>
+    </div>
+    <div class="week-card">
+      <div class="week-header"><h4>Week 3 — Apr 17–23</h4><div class="week-sub">Audit · Identify Gaps</div></div>
+      <div class="week-body">
+        <div class="week-item">Audit: messaging consistency across email sequences, LinkedIn, website, collaterals</div>
+        <div class="week-item">Map competitors — add to ANKA's competitor doc from your TORCH observations</div>
+        <div class="week-item">Deliver: Brand Messaging Framework v1 to Gayatri and Monishi</div>
+      </div>
+    </div>
+    <div class="week-card">
+      <div class="week-header"><h4>Week 4 — Apr 24–30</h4><div class="week-sub">Present · Align · Plan Month 2</div></div>
+      <div class="week-body">
+        <div class="week-item">Present GTM audit to Gayatri — what's working, what needs a rethink</div>
+        <div class="week-item">Deliver: Competitive positioning map (3 main competitors)</div>
+        <div class="week-item">Align with Gayatri on Month 2: which ICP to double down on, what channel to add</div>
+        <div class="week-item">Attend April retro with full team</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Weekly Rhythm</h3>
+  <div class="rhythm">
+    <div class="rhythm-day">Monday</div>
+    <div class="rhythm-desc">1-hour check-in with Gayatri (L1) — plan the week, pipeline review, blockers. Your most important recurring meeting.</div>
+    <div class="rhythm-day">Daily</div>
+    <div class="rhythm-desc">15-min standup (async or live) — what I did, what I'm doing, blockers. Tag Monishi on Slack.</div>
+    <div class="rhythm-day">Wednesday</div>
+    <div class="rhythm-desc">Full ANKA team sync — coordinated by Monishi. Metrics, open items, next steps.</div>
+    <div class="rhythm-day">Friday</div>
+    <div class="rhythm-desc">Weekly summary to Gayatri + Monishi — GTM metrics, content, demos influenced, next week plan.</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 11 TEAM & TOOLS -->
+<section id="s11">
+  <div class="section-label">11 — Team & Tools</div>
+  <h2>Who Does What</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Person</th><th>Title</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td>Gayatri Garg</td><td>CRO · L1</td><td>Your L1 manager. Product, demos, enterprise relationships. Monday 1hr check-in is with her.</td></tr>
+      <tr><td>Madhav Garg</td><td>CEO · L2</td><td>Company vision, overall direction. Escalate through Gayatri.</td></tr>
+      <tr><td>Monishi Kothiyal</td><td>Sales & Marketing Executive</td><td>Your day-to-day contact. HubSpot, reporting, website, LinkedIn publishing, team coordination.</td></tr>
+      <tr><td>Tanu Bhatia</td><td>Sr. Manager, Sales & Marketing</td><td>Content. LinkedIn copy, email sequences, blogs, collaterals, sales enablement.</td></tr>
+      <tr><td>Akash</td><td>Assistant Manager, Data</td><td>Database, ICP tiering, contact enrichment, A/B tier lists, Apollo.io. Delivers verified lists to Rahul.</td></tr>
+      <tr><td>Sukriti Khandelwal</td><td>Graphic Designer</td><td>LinkedIn graphics, demo deck, website collaterals, ad creatives.</td></tr>
+      <tr><td>Rahul Kumar</td><td>Email Operations</td><td>Smartlead, DNS, domain warmup, campaign ops, TORCH logistics.</td></tr>
+      <tr><td>Noor</td><td>BDR / Sales</td><td>LinkedIn outreach, reply handling, demo scheduling, HubSpot pipeline.</td></tr>
+      <tr><td>Deepak</td><td>RCM Subject Matter Expert</td><td>Primary research for content. Validate all product and workflow claims with Deepak before publishing.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Tool Stack</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Tool</th><th>What It's For</th></tr></thead>
+    <tbody>
+      <tr><td>HubSpot</td><td>CRM, pipeline management, email workflows, lead scoring, demo booking. Primary source of truth.</td></tr>
+      <tr><td>Smartlead</td><td>Cold email sequencing. All 4 ICP campaigns. Domain warmup. Reply detection — sequence pauses on reply.</td></tr>
+      <tr><td>Vector</td><td>Website visitor de-anonymisation. Real-time Slack alerts when named companies visit.</td></tr>
+      <tr><td>Apollo.io</td><td>Contact enrichment, revenue enrichment, list building. Akash owns this.</td></tr>
+      <tr><td>Canva</td><td>Design templates. Sukriti owns the brand kit. All social graphics come from here.</td></tr>
+      <tr><td>Slack</td><td>Internal comms. #website-visitors for Vector alerts. Tag Monishi for anything urgent.</td></tr>
+      <tr><td>Claude / Claude.ai</td><td>AI-assisted content production for first drafts. Always human-reviewed before any publish.</td></tr>
+      <tr><td>Whova</td><td>Conference app for TORCH. Lead capture at booth. Akash manages the pre-mapped attendee list.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div style="margin-top:40px;padding:20px;background:var(--gdim);border-radius:8px;border:1px solid #a7f3d0;text-align:center;">
+    <p style="margin:0;color:var(--gl);font-size:13px;">Questions? Reach <strong>Monishi Kothiyal</strong> on Slack &nbsp;·&nbsp; Prepared March 30, 2026</p>
+  </div>
+</section>
+
+</main>
+<script>
+const sections=document.querySelectorAll('section[id]');
+const navItems=document.querySelectorAll('.nav-item[href^="#s"]');
+const progress=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const scrollY=window.scrollY;
+  const docH=document.body.scrollHeight-window.innerHeight;
+  progress.style.width=Math.min(100,(scrollY/docH)*100)+'%';
+  let cur='';
+  sections.forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id;});
+  navItems.forEach(n=>n.classList.toggle('active',n.getAttribute('href')==='#'+cur));
+});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
